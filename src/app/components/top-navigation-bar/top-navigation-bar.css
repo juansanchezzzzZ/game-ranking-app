@@ -1,0 +1,10 @@
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0f1420;
+  padding: 0 24px;
+  height: 64px;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}

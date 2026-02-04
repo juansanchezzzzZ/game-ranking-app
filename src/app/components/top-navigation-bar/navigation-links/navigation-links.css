@@ -1,0 +1,14 @@
+.links {
+  display: flex;
+  gap: 32px;
+  font-weight: 500;
+}
+
+.links a {
+  cursor: pointer;
+  color: #ccc;
+}
+
+.links a:hover {
+  color: white;
+}

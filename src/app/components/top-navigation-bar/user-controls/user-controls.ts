@@ -2,10 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-user-controls',
-  imports: [],
-  templateUrl: './user-controls.html',
-  styleUrl: './user-controls.css',
+  standalone: true,
+  template: `
+    <div class="controls">
+      <button class="logout">Logout</button>
+      <div class="profile">👤</div>
+    </div>
+  `,
+  styleUrl: './user-controls.css'
 })
-export class UserControls {
-
-}
+export class UserControls {}

@@ -5,7 +5,7 @@ import { TopNavigationBar } from "./components/top-navigation-bar/top-navigation
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MainGrid, TopNavigationBar],
+  imports: [ MainGrid, TopNavigationBar],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

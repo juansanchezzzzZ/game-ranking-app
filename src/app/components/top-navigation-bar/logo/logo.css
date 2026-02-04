@@ -1,0 +1,12 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 18px;
+}
+
+.icon {
+  font-size: 20px;
+}
