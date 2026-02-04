@@ -1,21 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {inject} from '@angular/core';
+import { UserFirebaseService } from '../../services/user-firebase.service';
 import { UserService } from '../../services/user.service';
-import { User } from '../../models/user.model';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-main-grid',
   standalone: true,
   imports: [],
   templateUrl: './main-grid.html',
-  styleUrl: './main-grid.css',
+  styleUrl: './main-grid.css'
 })
 export class MainGrid implements OnInit {
-  users: User[] = [];
-  constructor(public userService: UserService) {}
+  userService = inject(UserService); 
+  userFirebaseService = inject(UserFirebaseService);
 
-  ngOnInit(): void {
-    this.userService.getUsers().subscribe((users => {
+  ngOnInit() {
+    this.userFirebaseService.getUsers().subscribe(users => {
       console.log(users);
-    }));
-  }
+    });
+
+
+}
 }

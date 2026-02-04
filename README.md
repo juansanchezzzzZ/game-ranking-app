@@ -36,6 +36,6 @@ The main goal is to demonstrate how a modern web application can interact with a
 ## Development server
 
 To start the development server:
-
+npm install @angular/fire@21.0.0-rc.0 firebase@latest --save
 ```bash
 ng serve
