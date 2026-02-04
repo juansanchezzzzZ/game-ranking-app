@@ -9,6 +9,8 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { routes } from './app.routes';
 import { environment } from '../environments/environment';
 
+import { UserService } from '../app/services/user.service';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     // Manejo global de errores del navegador
@@ -28,5 +30,8 @@ export const appConfig: ApplicationConfig = {
 
     //Firebase Storage
     provideStorage(() => getStorage()),
+
+    // Servicios personalizados
+    UserService
   ]
 };
