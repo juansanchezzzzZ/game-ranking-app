@@ -5,9 +5,7 @@ GamingDashboardApp (Root Container)
 │   │   └── Image (Element)
 │   │
 │   ├── NavigationLinks (Component - Reusable)
-│   │   ├── NavLink (Component - Reusable) - "GAME"
-│   │   ├── NavLink (Component - Reusable) - "LEADERBOARD"
-│   │   └── NavLink (Component - Reusable) - "PROFILE"
+│   │   └── (TEXT) - "GAME", (TEXT) - "LEADERBOARD", (TEXT) - "PROFILE"
 │   │
 │   └── UserControls (Component)
 │       ├── LogoutButton (Component - Reusable Button)
@@ -18,11 +16,7 @@ GamingDashboardApp (Root Container)
     │
     ├── GameAreaCard (Component - Card Wrapper - Reusable)
     │   ├── CardHeader (Component - Reusable)
-    │   │   └── Title (Text) - "PLAY NOW"
-    │   │
-    │   ├── CardBody (Component - Reusable)
-    │   │   ├── ScoreDisplay (Component)
-    │   │   │   └── ScoreText (Text) - Current Score Value
+    │   │   ├── Title (Text) - "PLAY NOW"
     │   │   │
     │   │   └── GameImage (Component)
     │   │       └── Image (Element) - Game Visual

@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-start-game-button',
-  imports: [],
+  standalone: true,
   templateUrl: './start-game-button.html',
-  styleUrl: './start-game-button.css',
+  styleUrl: './start-game-button.css'
 })
-export class StartGameButton {
-
-}
+export class StartGameButton {}

@@ -1,25 +1,13 @@
 import { Component } from '@angular/core';
-import {inject} from '@angular/core';
-import { UserFirebaseService } from '../../services/user-firebase.service';
-import { UserService } from '../../services/user.service';
-import { OnInit } from '@angular/core';
+import { GameAreaCard } from './game-area-card/game-area-card';
+import { UserStatsCard } from './user-stats-card/user-stats-card';
+import { RankingsCard } from './rankings-card/rankings-card';
 
 @Component({
   selector: 'app-main-grid',
   standalone: true,
-  imports: [],
+  imports: [GameAreaCard, UserStatsCard, RankingsCard],
   templateUrl: './main-grid.html',
   styleUrl: './main-grid.css'
 })
-export class MainGrid implements OnInit {
-  userService = inject(UserService); 
-  userFirebaseService = inject(UserFirebaseService);
-
-  ngOnInit() {
-    this.userFirebaseService.getUsers().subscribe(users => {
-      console.log(users);
-    });
-
-
-}
-}
+export class MainGrid {}
