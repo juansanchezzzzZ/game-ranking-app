@@ -1,0 +1,11 @@
+.table-cell {
+  flex: 1;
+  padding: 6px 10px;
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+.table-cell.score {
+  color: #facc15; /* dorado */
+  font-weight: 600;
+}

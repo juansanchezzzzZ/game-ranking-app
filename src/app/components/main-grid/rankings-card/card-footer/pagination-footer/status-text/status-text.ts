@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-status-text',
-  imports: [],
+  standalone: true,
   templateUrl: './status-text.html',
   styleUrl: './status-text.css',
 })
-export class StatusText {
-
-}
+export class StatusText {}

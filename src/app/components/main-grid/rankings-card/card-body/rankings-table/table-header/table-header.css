@@ -1,0 +1,8 @@
+.table-header {
+  display: grid;
+  grid-template-columns: 60px 1fr 100px;
+  padding: 12px 16px;
+  background: #364152;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 6px;
+}

@@ -1,0 +1,12 @@
+.secondary {
+  background: #2a2f3a;
+  border: none;
+  color: #e5e7eb;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.secondary:hover {
+  background: #3a4150;
+}

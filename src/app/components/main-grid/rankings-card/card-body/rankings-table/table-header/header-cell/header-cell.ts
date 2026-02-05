@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header-cell',
-  imports: [],
+  standalone: true,
   templateUrl: './header-cell.html',
   styleUrl: './header-cell.css',
 })
 export class HeaderCell {
-
+  @Input() text = '';
 }

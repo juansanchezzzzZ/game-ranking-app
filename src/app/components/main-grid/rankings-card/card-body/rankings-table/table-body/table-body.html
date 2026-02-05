@@ -1,1 +1,8 @@
-<p>table-body works!</p>
+<div class="table-body">
+  <app-table-row
+    *ngFor="let player of players"
+    [rank]="player.rank"
+    [name]="player.name"
+    [score]="player.score">
+  </app-table-row>
+</div>

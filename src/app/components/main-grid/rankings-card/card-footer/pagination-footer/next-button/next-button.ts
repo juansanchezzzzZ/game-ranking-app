@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-next-button',
-  imports: [],
+  standalone: true,
   templateUrl: './next-button.html',
   styleUrl: './next-button.css',
 })
-export class NextButton {
-
-}
+export class NextButton {}
