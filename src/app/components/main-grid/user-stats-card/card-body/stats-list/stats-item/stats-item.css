@@ -1,0 +1,17 @@
+.stats-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.label {
+  color: #9aa4b2;
+  font-size: 14px;
+}
+
+.value {
+  color: #ffffff;
+  font-weight: 600;
+}

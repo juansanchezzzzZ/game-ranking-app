@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-avatar-image',
-  imports: [],
+  standalone: true,
   templateUrl: './avatar-image.html',
-  styleUrl: './avatar-image.css',
+  styleUrl: './avatar-image.css'
 })
-export class AvatarImage {
-
-}
+export class AvatarImage {}

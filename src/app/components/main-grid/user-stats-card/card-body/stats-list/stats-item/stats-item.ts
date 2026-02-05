@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-stats-item',
-  imports: [],
+  standalone: true,
   templateUrl: './stats-item.html',
   styleUrl: './stats-item.css',
 })
 export class StatsItem {
-
+  @Input() label!: string;
+  @Input() value!: string;
 }
