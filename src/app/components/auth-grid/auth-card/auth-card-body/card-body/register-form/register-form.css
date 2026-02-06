@@ -1,0 +1,86 @@
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+label {
+  font-size: 13px;
+  color: #9fb3c8;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-wrapper i {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c7a8a;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+input {
+  height: 44px;
+  width: 100%;
+  padding: 0 14px 0 38px; /* espacio para el icono */
+  border-radius: 10px;
+  border: 1px solid rgba(0, 180, 255, 0.25);
+  background: #050b16;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+input::placeholder {
+  color: #6c7a8a;
+}
+
+input:focus {
+  border-color: rgba(0, 180, 255, 0.6);
+  box-shadow: 0 0 12px rgba(0, 180, 255, 0.25);
+}
+
+.input-wrapper:focus-within i {
+  color: #00c6ff;
+}
+
+.submit-btn {
+  margin-top: 12px;
+  height: 48px;
+  width: 100%;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(
+    90deg,
+    #00c6ff,
+    #0072ff
+  );
+
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.submit-btn:hover {
+  filter: brightness(1.1);
+}

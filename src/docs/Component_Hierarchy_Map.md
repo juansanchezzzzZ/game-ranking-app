@@ -73,7 +73,7 @@ GamingDashboardApp (Root Container)
 
 ## Link
 You can view the interactive Component Hierarchy map here:
-[GGaming Dashboard - Technical Component Hierarchy](https://www.figma.com/make/oBfISsPqCpmuPP0L0McQ2S/Gaming-Dashboard---Technical-Component-Hierarchy--Community-?t=pSwF8ht5wU2ZeVgP-1)
+[Gaming Dashboard - Technical Component Hierarchy](https://www.figma.com/make/oBfISsPqCpmuPP0L0McQ2S/Gaming-Dashboard---Technical-Component-Hierarchy--Community-?t=pSwF8ht5wU2ZeVgP-1)
 
 ---
 

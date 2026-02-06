@@ -1,0 +1,28 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: linear-gradient(
+    135deg,
+    #00c6ff,
+    #0072ff
+  );
+  box-shadow:
+    0 0 25px rgba(0, 180, 255, 0.7);
+}
+
+.logo-text {
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: white;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 12px rgba(0, 180, 255, 0.4);
+}

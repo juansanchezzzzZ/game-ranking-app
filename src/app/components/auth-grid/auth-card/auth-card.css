@@ -1,0 +1,22 @@
+.auth-card {
+  width: 350px;
+  min-height: 520px;
+  padding: 32px 28px;
+  border-radius: 18px;
+
+  background: linear-gradient(
+    180deg,
+    #13182B 0%,
+    #080f1a 100%
+  );
+
+  border: 1px solid rgba(0, 180, 255, 0.25);
+
+  box-shadow:
+    0 0 60px rgba(0, 180, 255, 0.18),
+    inset 0 0 30px rgba(0, 180, 255, 0.04);
+
+  position: relative;
+  color: white;
+  font-family: system-ui, sans-serif;
+}
