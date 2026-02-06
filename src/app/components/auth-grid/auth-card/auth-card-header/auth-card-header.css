@@ -1,0 +1,15 @@
+.auth-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.subtitle {
+  color: #9fb3c8;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  margin-top: 4px;
+}
+
