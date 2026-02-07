@@ -1,5 +1,17 @@
 <div class="auth-card-body">
-  <app-card-header></app-card-header>
-  <app-card-body></app-card-body>
-  <app-card-footer></app-card-footer>
+  <app-card-header #header></app-card-header>
+
+  <app-card-body #body></app-card-body>
+
+  <app-card-footer
+    [isLogin]="body.isLogin"
+    (onLogin)="
+      body.showLogin();
+      header.showLogin()
+    "
+    (onRegister)="
+      body.showRegister();
+      header.showRegister()
+    "
+  ></app-card-footer>
 </div>
