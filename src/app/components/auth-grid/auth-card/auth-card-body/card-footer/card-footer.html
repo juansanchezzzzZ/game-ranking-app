@@ -1,17 +1,15 @@
 <div class="card-footer">
   <div class="divider"></div>
 
-  <p class="redirect">
+  <p class="redirect" *ngIf="isLogin">
     <span>Don’t have an account?</span>
-    <a href="#">Create account</a>
+    <a (click)="onRegister.emit()">Create account</a>
   </p>
 
-  <!--
-  <p class="redirect">
+  <p class="redirect" *ngIf="!isLogin">
     <span>Already have an account?</span>
-    <a href="#">Login</a>
+    <a (click)="onLogin.emit()">Login</a>
   </p>
-  -->
 
   <div class="security-note">
     <i class="fa-solid fa-shield-halved"></i>

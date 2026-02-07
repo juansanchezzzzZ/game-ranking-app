@@ -1,5 +1,4 @@
 <div class="card-body">
-  <app-login-form></app-login-form> 
-
-  <!-- <app-register-form></app-register-form>-->
+  <app-login-form *ngIf="isLogin"></app-login-form>
+  <app-register-form *ngIf="!isLogin"></app-register-form>
 </div>
