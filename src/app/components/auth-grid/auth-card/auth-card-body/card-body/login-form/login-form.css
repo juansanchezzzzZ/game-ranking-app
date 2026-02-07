@@ -3,12 +3,16 @@
   flex-direction: column;
   gap: 18px;
   margin-top: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .form-field {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  width: 100%;
 }
 
 label {
@@ -16,31 +20,33 @@ label {
   color: #9fb3c8;
 }
 
-/* Contenedor icono + input */
 .input-wrapper {
   position: relative;
-  display: flex;
-  align-items: center;
+  width: 100%;
 }
 
 .input-wrapper i {
   position: absolute;
   left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
   color: #6c7a8a;
   font-size: 14px;
   pointer-events: none;
+  transition: 0.2s;
 }
 
 input {
   height: 44px;
   width: 100%;
-  padding: 0 14px 0 40px; /* espacio para el icono */
+  padding: 0 14px 0 38px;
   border-radius: 10px;
   border: 1px solid rgba(0, 180, 255, 0.25);
   background: #050b16;
   color: white;
   font-size: 14px;
   outline: none;
+  box-sizing: border-box;
 }
 
 input::placeholder {
@@ -52,23 +58,65 @@ input:focus {
   box-shadow: 0 0 12px rgba(0, 180, 255, 0.25);
 }
 
-/* iluminar icono al focus */
 .input-wrapper:focus-within i {
   color: #00c6ff;
 }
 
+/* ---------------- ERROR STATES ---------------- */
+
+input.ng-invalid.ng-touched {
+  border-color: #ff4d4d;
+  box-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
+}
+
+input.ng-invalid.ng-touched ~ i {
+  color: #ff4d4d;
+}
+
+small {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 6px;
+
+  background: #1a0b0b;
+  color: #ff6b6b;
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 8px;
+
+  border: 1px solid rgba(255, 77, 77, 0.4);
+  box-shadow: 0 0 12px rgba(255, 77, 77, 0.2);
+
+  animation: fadeIn 0.2s ease-in-out;
+  z-index: 20;
+}
+
+small::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 14px;
+
+  width: 10px;
+  height: 10px;
+  background: #1a0b0b;
+  transform: rotate(45deg);
+  border-left: 1px solid rgba(255, 77, 77, 0.4);
+  border-top: 1px solid rgba(255, 77, 77, 0.4);
+}
+
+/* ---------------- BUTTON ---------------- */
+
 .submit-btn {
   margin-top: 12px;
   height: 48px;
+  width: 100%;
   border-radius: 12px;
   border: none;
   cursor: pointer;
 
-  background: linear-gradient(
-    90deg,
-    #00c6ff,
-    #0072ff
-  );
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
 
   color: white;
   font-weight: 600;
@@ -78,4 +126,20 @@ input:focus {
 
 .submit-btn:hover {
   filter: brightness(1.1);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

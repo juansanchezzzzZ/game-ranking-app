@@ -1,21 +1,55 @@
-<form class="login-form">
+<form
+  class="login-form"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+  (focusout)="onBlur()"
+>
+  <!-- EMAIL -->
   <div class="form-field">
     <label>Email</label>
     <div class="input-wrapper">
       <i class="fa-solid fa-envelope"></i>
-      <input type="email" placeholder="Enter email" />
+      <input
+        type="email"
+        placeholder="Enter email"
+        formControlName="email"
+      />
     </div>
+
+    <small *ngIf="email.invalid && submitted">
+      <span *ngIf="email.errors?.['required']">
+        Email is required
+      </span>
+      <span *ngIf="email.errors?.['email']">
+        Invalid email format
+      </span>
+    </small>
   </div>
 
+  <!-- PASSWORD -->
   <div class="form-field">
     <label>Password</label>
     <div class="input-wrapper">
       <i class="fa-solid fa-lock"></i>
-      <input type="password" placeholder="Enter password" />
+      <input
+        type="password"
+        placeholder="Enter password"
+        formControlName="password"
+      />
     </div>
+
+    <small *ngIf="password.invalid && submitted">
+      <span *ngIf="password.errors?.['required']">
+        Password is required
+      </span>
+      <span *ngIf="password.errors?.['minlength']">
+        Minimum 6 characters
+      </span>
+    </small>
   </div>
 
   <button type="submit" class="submit-btn">
     SIGN IN
   </button>
+
 </form>
