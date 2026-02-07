@@ -7,6 +7,28 @@
   box-sizing: border-box;
 }
 
+/* ---------------- GLOBAL ERROR BANNER ---------------- */
+.error-banner {
+  background: rgba(255, 77, 77, 0.1);
+  border: 1px solid rgba(255, 77, 77, 0.5);
+  border-left: 4px solid #ff4d4d;
+  color: #ffbaba;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.error-banner i {
+  color: #ff4d4d;
+  font-size: 16px;
+}
+
+/* ---------------- FIELDS ---------------- */
 .form-field {
   position: relative;
   display: flex;
@@ -18,14 +40,17 @@
 label {
   font-size: 13px;
   color: #9fb3c8;
+  font-weight: 500;
+  margin-left: 2px;
 }
 
 .input-wrapper {
   position: relative;
   width: 100%;
+  transition: 0.3s ease;
 }
 
-.input-wrapper i {
+.input-wrapper i:not(.loader-inline) {
   position: absolute;
   left: 14px;
   top: 50%;
@@ -34,12 +59,27 @@ label {
   font-size: 14px;
   pointer-events: none;
   transition: 0.2s;
+  z-index: 2;
+}
+
+.loader-inline {
+  position: absolute;
+  right: 14px;
+  top: 35%; 
+  transform: translateY(-50%);
+  color: #00c6ff;
+  font-size: 14px;
+  z-index: 2;
+  pointer-events: none; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 input {
   height: 44px;
   width: 100%;
-  padding: 0 14px 0 38px;
+  padding: 0 38px 0 38px;
   border-radius: 10px;
   border: 1px solid rgba(0, 180, 255, 0.25);
   background: #050b16;
@@ -47,29 +87,32 @@ input {
   font-size: 14px;
   outline: none;
   box-sizing: border-box;
+  transition: all 0.2s ease;
 }
 
 input::placeholder {
-  color: #6c7a8a;
+  color: #4a5568;
 }
 
 input:focus {
   border-color: rgba(0, 180, 255, 0.6);
   box-shadow: 0 0 12px rgba(0, 180, 255, 0.25);
+  background: #0a1425;
 }
 
-.input-wrapper:focus-within i {
+.input-wrapper:focus-within i:not(.loader-inline) {
   color: #00c6ff;
 }
 
-/* ---------------- ERROR STATES ---------------- */
+/* ---------------- VALIDATION STATES ---------------- */
 
-input.ng-invalid.ng-touched {
+.input-wrapper.error input,
+input.ng-invalid.ng-dirty:not(:focus) {
   border-color: #ff4d4d;
-  box-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
+  box-shadow: 0 0 10px rgba(255, 77, 77, 0.1);
 }
 
-input.ng-invalid.ng-touched ~ i {
+.input-wrapper.error i:not(.loader-inline) {
   color: #ff4d4d;
 }
 
@@ -78,16 +121,13 @@ small {
   right: 0;
   top: 100%;
   margin-top: 6px;
-
   background: #1a0b0b;
   color: #ff6b6b;
   font-size: 11px;
   padding: 6px 10px;
   border-radius: 8px;
-
   border: 1px solid rgba(255, 77, 77, 0.4);
-  box-shadow: 0 0 12px rgba(255, 77, 77, 0.2);
-
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   animation: fadeIn 0.2s ease-in-out;
   z-index: 20;
 }
@@ -97,7 +137,6 @@ small::before {
   position: absolute;
   top: -6px;
   right: 14px;
-
   width: 10px;
   height: 10px;
   background: #1a0b0b;
@@ -106,7 +145,7 @@ small::before {
   border-top: 1px solid rgba(255, 77, 77, 0.4);
 }
 
-/* ---------------- BUTTON ---------------- */
+/* ---------------- BUTTON & LOADING ---------------- */
 
 .submit-btn {
   margin-top: 12px;
@@ -115,25 +154,49 @@ small::before {
   border-radius: 12px;
   border: none;
   cursor: pointer;
-
   background: linear-gradient(90deg, #00c6ff, #0072ff);
-
   color: white;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   font-size: 14px;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.submit-btn:hover {
+.submit-btn:hover:not(:disabled) {
   filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(0, 114, 255, 0.3);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .submit-btn:disabled {
-  opacity: 0.5;
+  opacity: 0.6;
   cursor: not-allowed;
+  background: #2d3748;
 }
 
-/* animation*/
+.loading-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.fa-spin {
+  animation: spin 1s linear infinite;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

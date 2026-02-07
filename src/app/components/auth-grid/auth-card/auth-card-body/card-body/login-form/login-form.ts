@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   ReactiveFormsModule,
   FormBuilder,
@@ -7,6 +7,7 @@ import {
   AbstractControl
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../../../../services/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -16,11 +17,15 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./login-form.css'],
 })
 export class LoginForm {
+  private fb = inject(FormBuilder);
+  private authService = inject(AuthService);
 
   form: FormGroup;
   submitted = false;
+  isLoading = false;
+  errorMessage: string | null = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor() {
     this.form = this.fb.group({
       email: this.fb.control('', {
         validators: [Validators.required, Validators.email],
@@ -33,28 +38,51 @@ export class LoginForm {
     });
   }
 
-  submit(): void {
+  async submit(): Promise<void> {
     this.submitted = true;
+    this.errorMessage = null;
 
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
 
-    const data = this.form.getRawValue();
-    console.log('LOGIN DATA', data);
+    this.isLoading = true;
+    const { email, password } = this.form.getRawValue();
+
+    try {
+      await this.authService.signIn(email, password);
+      
+      console.log('LOGIN SUCCESS');
+
+    } catch (error: any) {
+      console.error('LOGIN ERROR:', error);
+      this.errorMessage = this.mapFirebaseError(error.code);
+    } finally {
+      this.isLoading = false;
+    }
   }
 
-  /** Se llama cuando se hace click fuera del form */
+  private mapFirebaseError(code: string): string {
+    switch (code) {
+      case 'auth/user-not-found':
+      case 'auth/invalid-credential':
+        return 'Credenciales incorrectas o el usuario no existe.';
+      case 'auth/wrong-password':
+        return 'La contraseña es incorrecta.';
+      case 'auth/too-many-requests':
+        return 'Demasiados intentos fallidos. Inténtalo más tarde.';
+      default:
+        return 'Error al iniciar sesión. Verifica tus datos.';
+    }
+  }
+
   onBlur(): void {
-    this.submitted = false;
+    if (this.form.valid) {
+      this.submitted = false;
+    }
   }
 
-  get email(): AbstractControl {
-    return this.form.get('email')!;
-  }
-
-  get password(): AbstractControl {
-    return this.form.get('password')!;
-  }
+  get email(): AbstractControl { return this.form.get('email')!; }
+  get password(): AbstractControl { return this.form.get('password')!; }
 }
