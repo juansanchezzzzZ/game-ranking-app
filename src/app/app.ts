@@ -14,8 +14,5 @@ import { AuthGrid } from './components/auth-grid/auth-grid';
 })
 export class App {
   private auth = inject(Auth);
-  
-  forceAuthMode = true; 
-
   user$ = user(this.auth); 
 }

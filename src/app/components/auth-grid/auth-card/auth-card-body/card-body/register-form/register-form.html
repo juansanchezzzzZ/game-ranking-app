@@ -1,64 +1,54 @@
-<form
-  class="register-form"
-  [formGroup]="form"
-  (ngSubmit)="submit()"
-  (focusout)="onBlur()"
->
-  <div class="error-banner" *ngIf="errorMessage && submitted">
-    <i class="fa-solid fa-circle-exclamation"></i>
-    <span class="error-message">{{ errorMessage }}</span>
-  </div>
-
+<form class="register-form" [formGroup]="form" (ngSubmit)="submit()">
+  
   <div class="form-field">
     <label>Username</label>
-    <div class="input-wrapper" 
-         [class.error]="username.invalid && (username.dirty || submitted)">
+    <div class="input-wrapper" [class.error]="username.invalid && (username.touched || submitted)">
       <i class="fa-solid fa-user"></i>
-      <input
-        type="text"
-        placeholder="Enter username"
-        formControlName="username"
+      <input 
+        type="text" 
+        placeholder="Enter username" 
+        formControlName="username" 
+        (focus)="onFocus()"
       />
       <i *ngIf="username.pending" class="fa-solid fa-circle-notch fa-spin loader-inline"></i>
     </div>
-
-    <small class="error-text" *ngIf="username.invalid && (username.dirty || submitted)">
+    <small class="error-text" *ngIf="username.invalid && (username.touched || submitted)">
       <span *ngIf="username.errors?.['required']">Username is required</span>
       <span *ngIf="username.errors?.['minlength']">Minimum 3 characters</span>
-      <span *ngIf="username.errors?.['usernameTaken']">Este nombre de usuario ya está tomado</span>
+      <span *ngIf="username.errors?.['usernameTaken']">This username is already taken</span>
     </small>
   </div>
 
   <div class="form-field">
     <label>Email</label>
-    <div class="input-wrapper" 
-         [class.error]="email.invalid && (email.dirty || submitted)">
+    <div class="input-wrapper" [class.error]="email.invalid && (email.touched || submitted)">
       <i class="fa-solid fa-envelope"></i>
-      <input
-        type="email"
-        placeholder="Enter email"
-        formControlName="email"
+      <input 
+        type="email" 
+        placeholder="Enter email" 
+        formControlName="email" 
+        (focus)="onFocus()"
       />
     </div>
-
-    <small class="error-text" *ngIf="email.invalid && (email.dirty || submitted)">
+    <small class="error-text" *ngIf="email.invalid && (email.touched || submitted)">
       <span *ngIf="email.errors?.['required']">Email is required</span>
       <span *ngIf="email.errors?.['email']">Invalid email format</span>
+      <span *ngIf="email.errors?.['firebase']">{{ errorMessage }}</span>
     </small>
   </div>
 
   <div class="form-field">
     <label>Password</label>
-    <div class="input-wrapper" [class.error]="password.invalid && (password.dirty || submitted)">
+    <div class="input-wrapper" [class.error]="password.invalid && (password.touched || submitted)">
       <i class="fa-solid fa-lock"></i>
-      <input
-        type="password"
-        placeholder="Enter password"
-        formControlName="password"
+      <input 
+        type="password" 
+        placeholder="Enter password" 
+        formControlName="password" 
+        (focus)="onFocus()"
       />
     </div>
-
-    <small class="error-text" *ngIf="password.invalid && (password.dirty || submitted)">
+    <small class="error-text" *ngIf="password.invalid && (password.touched || submitted)">
       <span *ngIf="password.errors?.['required']">Password is required</span>
       <span *ngIf="password.errors?.['minlength']">Minimum 6 characters</span>
     </small>
@@ -66,36 +56,30 @@
 
   <div class="form-field">
     <label>Confirm Password</label>
-    <div class="input-wrapper" [class.error]="confirmPassword.invalid && (confirmPassword.dirty || submitted)">
+    <div class="input-wrapper" [class.error]="confirmPassword.invalid && (confirmPassword.touched || submitted)">
       <i class="fa-solid fa-lock"></i>
-      <input
-        type="password"
-        placeholder="Confirm password"
-        formControlName="confirmPassword"
+      <input 
+        type="password" 
+        placeholder="Confirm password" 
+        formControlName="confirmPassword" 
+        (focus)="onFocus()"
       />
     </div>
-
-    <small class="error-text" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || submitted)">
+    <small class="error-text" *ngIf="confirmPassword.invalid && (confirmPassword.touched || submitted)">
       <span *ngIf="confirmPassword.errors?.['required']">Confirm your password</span>
       <span *ngIf="confirmPassword.errors?.['mismatch']">Passwords do not match</span>
     </small>
   </div>
 
-  <button 
-    type="submit" 
-    class="submit-btn" 
-    [disabled]="isLoading || form.pending"
-  >
+  <button type="submit" class="submit-btn" [disabled]="isLoading || form.pending">
     <span *ngIf="!isLoading && !form.pending">SIGN UP</span>
     
     <span *ngIf="form.pending && !isLoading" class="loading-content">
-      <i class="fa-solid fa-magnifying-glass fa-pulse"></i>
-      CHECKING USERNAME...
+      <i class="fa-solid fa-magnifying-glass fa-pulse"></i> CHECKING...
     </span>
-
+    
     <span *ngIf="isLoading" class="loading-content">
-      <i class="fa-solid fa-circle-notch fa-spin"></i>
-      ENTERING ARENA...
+      <i class="fa-solid fa-circle-notch fa-spin"></i> ENTERING ARENA...
     </span>
   </button>
 </form>

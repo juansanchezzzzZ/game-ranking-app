@@ -1,14 +1,10 @@
-<div class="container">
-  
-  <ng-container *ngIf="(user$ | async) && !forceAuthMode; else authMode">
-    <app-top-navigation-bar></app-top-navigation-bar>
-    <main class="content-fade-in">
-      <app-main-grid></app-main-grid>
-    </main>
-  </ng-container>
+<ng-container *ngIf="user$ | async as currentUser; else loggedOut">
+  <app-top-navigation-bar></app-top-navigation-bar>
+  <main>
+    <app-main-grid></app-main-grid>
+  </main>
+</ng-container>
 
-  <ng-template #authMode>
-    <app-auth-grid></app-auth-grid>
-  </ng-template>
-
-</div>
+<ng-template #loggedOut>
+  <app-auth-grid></app-auth-grid>
+</ng-template>

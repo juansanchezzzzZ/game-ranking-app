@@ -5,7 +5,6 @@ import {
   signInWithEmailAndPassword, 
   signOut, 
   updateProfile,
-  fetchSignInMethodsForEmail,
   authState
 } from '@angular/fire/auth';
 import { 
@@ -18,19 +17,18 @@ import {
   getDocs,
   serverTimestamp 
 } from '@angular/fire/firestore';
+import { shareReplay } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private auth = inject(Auth);
   private firestore = inject(Firestore);
 
-  user$ = authState(this.auth);
+  user$ = authState(this.auth).pipe(shareReplay(1));
 
   async signUp(email: string, pass: string, username: string) {
-
     const credential = await createUserWithEmailAndPassword(this.auth, email, pass);
     
-
     await updateProfile(credential.user, { displayName: username });
 
     const userDoc = doc(this.firestore, `users/${credential.user.uid}`);
@@ -48,8 +46,12 @@ export class AuthService {
     return signInWithEmailAndPassword(this.auth, email, pass);
   }
 
-  logout() {
-    return signOut(this.auth);
+  async logout() {
+    try {
+      await signOut(this.auth);
+    } catch (error) {
+      console.error("Logout Error:", error);
+    }
   }
 
   async checkIfUsernameExists(username: string): Promise<boolean> {
@@ -67,14 +69,18 @@ export class AuthService {
     }
   }
 
-  async checkIfEmailExists(email: string): Promise<boolean> {
+  async checkIfEmailInFirestore(email: string): Promise<boolean> {
     if (!email || !email.includes('@')) return false;
+
+    const usersRef = collection(this.firestore, 'users');
+    const q = query(usersRef, where('email', '==', email.toLowerCase().trim()));
     
     try {
-      const methods = await fetchSignInMethodsForEmail(this.auth, email);
-      return methods.length > 0;
+      const querySnapshot = await getDocs(q);
+      return !querySnapshot.empty;
     } catch (error) {
-      return false; 
+      console.error("Error checking email in Firestore:", error);
+      return false;
     }
   }
 }
