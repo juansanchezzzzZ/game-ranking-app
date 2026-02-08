@@ -4,52 +4,52 @@
   (ngSubmit)="submit()"
   (focusout)="onBlur()"
 >
-  <!-- EMAIL -->
   <div class="form-field">
     <label>Email</label>
-    <div class="input-wrapper">
+    <div class="input-wrapper" [class.error]="email.invalid && (email.touched || submitted)">
       <i class="fa-solid fa-envelope"></i>
       <input
         type="email"
-        placeholder="Enter email"
+        placeholder="Enter your email"
         formControlName="email"
+        (focus)="onFocus()"
       />
     </div>
 
-    <small *ngIf="email.invalid && submitted">
-      <span *ngIf="email.errors?.['required']">
-        Email is required
-      </span>
-      <span *ngIf="email.errors?.['email']">
-        Invalid email format
-      </span>
+    <small class="error-text" *ngIf="email.invalid && (email.touched || submitted)">
+      <span *ngIf="email.errors?.['required']">Email is required</span>
+      <span *ngIf="email.errors?.['email']">Invalid email format</span>
     </small>
   </div>
 
-  <!-- PASSWORD -->
   <div class="form-field">
     <label>Password</label>
-    <div class="input-wrapper">
+    <div class="input-wrapper" [class.error]="password.invalid && (password.touched || submitted)">
       <i class="fa-solid fa-lock"></i>
       <input
         type="password"
-        placeholder="Enter password"
+        placeholder="••••••••"
         formControlName="password"
+        (focus)="onFocus()"
       />
     </div>
 
-    <small *ngIf="password.invalid && submitted">
-      <span *ngIf="password.errors?.['required']">
-        Password is required
-      </span>
-      <span *ngIf="password.errors?.['minlength']">
-        Minimum 6 characters
+    <small class="error-text" *ngIf="password.invalid && (password.touched || submitted)">
+      <span *ngIf="password.errors?.['required']">Password is required</span>
+      <span *ngIf="password.errors?.['minlength']">Minimum 6 characters</span>
+      
+      <span *ngIf="password.errors?.['wrongPassword'] || password.errors?.['blocked']">
+        {{ errorMessage }}
       </span>
     </small>
   </div>
 
-  <button type="submit" class="submit-btn">
-    SIGN IN
+  <button type="submit" class="submit-btn" [disabled]="isLoading">
+    <span *ngIf="!isLoading">SIGN IN</span>
+    
+    <span *ngIf="isLoading" class="loading-content">
+      <i class="fa-solid fa-circle-notch fa-spin"></i>
+      CHECKING CREDENTIALS...
+    </span>
   </button>
-
 </form>

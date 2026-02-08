@@ -1,4 +1,11 @@
-<div class="card-body">
-  <app-login-form *ngIf="isLogin"></app-login-form>
-  <app-register-form *ngIf="!isLogin"></app-register-form>
+<div class="card-body-content">
+  <app-login-form 
+    *ngIf="isLogin" 
+    (switchMode)="handleSmartSwitch($event)"
+  ></app-login-form>
+
+  <app-register-form 
+    *ngIf="!isLogin" 
+    [initialEmail]="tempEmail"
+  ></app-register-form>
 </div>

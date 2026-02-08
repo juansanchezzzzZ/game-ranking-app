@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginForm } from './login-form/login-form';
 import { RegisterForm } from './register-form/register-form';
@@ -12,9 +12,19 @@ import { RegisterForm } from './register-form/register-form';
 })
 export class CardBody {
   isLogin = true;
+  tempEmail = '';
+
+  @Output() modeSwitched = new EventEmitter<void>();
+
+  handleSmartSwitch(email: string) {
+    this.tempEmail = email;
+    this.isLogin = false;
+    this.modeSwitched.emit();
+  }
 
   showLogin() {
     this.isLogin = true;
+    this.tempEmail = '';
   }
 
   showRegister() {

@@ -1,7 +1,10 @@
-<div class = "container">
-  <!-- <app-top-navigation-bar></app-top-navigation-bar> -->
-  <!-- <app-main-grid></app-main-grid> -->
+<ng-container *ngIf="user$ | async as currentUser; else loggedOut">
+  <app-top-navigation-bar></app-top-navigation-bar>
+  <main>
+    <app-main-grid></app-main-grid>
+  </main>
+</ng-container>
+
+<ng-template #loggedOut>
   <app-auth-grid></app-auth-grid>
-
-
-</div>
+</ng-template>

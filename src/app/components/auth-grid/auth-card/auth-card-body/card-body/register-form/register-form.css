@@ -25,7 +25,7 @@ label {
   width: 100%;
 }
 
-.input-wrapper i {
+.input-wrapper i:not(.loader-inline) {
   position: absolute;
   left: 14px;
   top: 50%;
@@ -34,6 +34,14 @@ label {
   font-size: 14px;
   pointer-events: none;
   transition: 0.2s;
+}
+
+.loader-inline {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  color: #00c6ff;
+  font-size: 14px;
 }
 
 input {
@@ -58,46 +66,41 @@ input:focus {
   box-shadow: 0 0 12px rgba(0, 180, 255, 0.25);
 }
 
-.input-wrapper:focus-within i {
+.input-wrapper:focus-within i:not(.loader-inline) {
   color: #00c6ff;
 }
 
-/* ---------------- ERROR STATES ---------------- */
-
-input.ng-invalid.ng-touched {
+.input-wrapper.error input {
   border-color: #ff4d4d;
   box-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
 }
 
-input.ng-invalid.ng-touched ~ i {
+.input-wrapper.error i:not(.loader-inline) {
   color: #ff4d4d;
 }
 
-small {
+.error-text {
   position: absolute;
   right: 0;
   top: 100%;
   margin-top: 6px;
-
   background: #1a0b0b;
   color: #ff6b6b;
   font-size: 11px;
   padding: 6px 10px;
   border-radius: 8px;
-
   border: 1px solid rgba(255, 77, 77, 0.4);
-  box-shadow: 0 0 12px rgba(255, 77, 77, 0.2);
-
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   animation: fadeIn 0.2s ease-in-out;
   z-index: 20;
+  pointer-events: none;
 }
 
-small::before {
+.error-text::before {
   content: "";
   position: absolute;
   top: -6px;
   right: 14px;
-
   width: 10px;
   height: 10px;
   background: #1a0b0b;
@@ -106,8 +109,6 @@ small::before {
   border-top: 1px solid rgba(255, 77, 77, 0.4);
 }
 
-/* ---------------- BUTTON ---------------- */
-
 .submit-btn {
   margin-top: 12px;
   height: 48px;
@@ -115,32 +116,41 @@ small::before {
   border-radius: 12px;
   border: none;
   cursor: pointer;
-
   background: linear-gradient(90deg, #00c6ff, #0072ff);
-
   color: white;
   font-weight: 600;
   letter-spacing: 0.1em;
   font-size: 14px;
+  text-transform: uppercase;
 }
 
-.submit-btn:hover {
+.submit-btn:hover:not(:disabled) {
   filter: brightness(1.1);
 }
 
 .submit-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  background: #232a35;
 }
 
-/* animation*/
+.loading-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+.fa-spin {
+  animation: spin 1s linear infinite;
 }

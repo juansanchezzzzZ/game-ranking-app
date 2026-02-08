@@ -62,14 +62,12 @@ input:focus {
   color: #00c6ff;
 }
 
-/* ---------------- ERROR STATES ---------------- */
-
-input.ng-invalid.ng-touched {
+.input-wrapper.error input {
   border-color: #ff4d4d;
   box-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
 }
 
-input.ng-invalid.ng-touched ~ i {
+.input-wrapper.error i {
   color: #ff4d4d;
 }
 
@@ -78,18 +76,16 @@ small {
   right: 0;
   top: 100%;
   margin-top: 6px;
-
   background: #1a0b0b;
   color: #ff6b6b;
   font-size: 11px;
   padding: 6px 10px;
   border-radius: 8px;
-
   border: 1px solid rgba(255, 77, 77, 0.4);
   box-shadow: 0 0 12px rgba(255, 77, 77, 0.2);
-
   animation: fadeIn 0.2s ease-in-out;
   z-index: 20;
+  pointer-events: none;
 }
 
 small::before {
@@ -97,7 +93,6 @@ small::before {
   position: absolute;
   top: -6px;
   right: 14px;
-
   width: 10px;
   height: 10px;
   background: #1a0b0b;
@@ -106,8 +101,6 @@ small::before {
   border-top: 1px solid rgba(255, 77, 77, 0.4);
 }
 
-/* ---------------- BUTTON ---------------- */
-
 .submit-btn {
   margin-top: 12px;
   height: 48px;
@@ -115,9 +108,7 @@ small::before {
   border-radius: 12px;
   border: none;
   cursor: pointer;
-
   background: linear-gradient(90deg, #00c6ff, #0072ff);
-
   color: white;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -131,6 +122,13 @@ small::before {
 .submit-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.loading-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 @keyframes fadeIn {
