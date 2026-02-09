@@ -1,17 +1,30 @@
-.stats-item {
+:host {
+  display: block;
+  width: 100%;
+}
+
+.stats-item-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.label {
-  color: #9aa4b2;
-  font-size: 14px;
+/* El último item de la lista no necesita borde inferior */
+:host:last-child .stats-item-container {
+  border-bottom: none;
 }
 
-.value {
+.stats-label {
+  color: #a0a0a0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stats-value {
   color: #ffffff;
+  font-size: 1rem;
   font-weight: 600;
 }

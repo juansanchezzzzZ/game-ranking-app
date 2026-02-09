@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './stats-item.css',
 })
 export class StatsItem {
-  @Input() label!: string;
-  @Input() value!: string;
+  @Input({ required: true }) label!: string;
+  @Input({ required: true }) value: string | number | null = '';
 }

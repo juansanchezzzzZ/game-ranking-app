@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../../../services/auth.service';
 import { StatsItem } from './stats-item/stats-item';
 
 @Component({
   selector: 'app-stats-list',
   standalone: true,
-  imports: [StatsItem],
+  imports: [CommonModule, StatsItem],
   templateUrl: './stats-list.html',
   styleUrl: './stats-list.css',
 })
-export class StatsList {}
+export class StatsList {
+  private authService = inject(AuthService);
+  userData$ = this.authService.userProfile$;
+}

@@ -1,3 +1,16 @@
-<app-stats-item label="Username" value="PlayerOne"></app-stats-item>
-<app-stats-item label="Highest Score" value="85"></app-stats-item>
-<app-stats-item label="Total Play Time" value="42.2 hr"></app-stats-item>
+<div class="stats-list-wrapper" *ngIf="userData$ | async as user">
+  <app-stats-item 
+    label="Username" 
+    [value]="user.usernameDisplay">
+  </app-stats-item>
+
+  <app-stats-item 
+    label="Highest Score" 
+    [value]="user.highestScore">
+  </app-stats-item>
+
+  <app-stats-item 
+    label="Total Play Time" 
+    [value]="user.totalPlayTimeSec + 's'">
+  </app-stats-item>
+</div>
