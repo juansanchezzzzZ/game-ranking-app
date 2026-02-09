@@ -1,13 +1,32 @@
-.avatar-image {
-  width: 90px;
-  height: 90px;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #dadce0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #555;
-  font-size: 12px;
-  font-weight: 600;
+:host {
+  display: block;
+}
+
+.avatar-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* Makes it a circle */
+  object-fit: cover;
+  border: 3px solid #4f46e5; /* Primary brand color */
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+  background-color: #1a1a1a;
+}
+
+/* Optional: Online status dot */
+.status-indicator {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 18px;
+  height: 18px;
+  background-color: #22c55e; /* Green */
+  border: 3px solid #1a1a1a;
+  border-radius: 50%;
 }
