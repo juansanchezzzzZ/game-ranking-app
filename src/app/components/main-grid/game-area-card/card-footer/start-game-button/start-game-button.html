@@ -1,3 +1,6 @@
-<button class="primary">
-  START GAME
+<button 
+  class="primary" 
+  [class.stop-mode]="gameService.isPlaying()" 
+  (click)="handleAction()">
+  {{ gameService.isPlaying() ? 'STOP GAME' : 'START GAME' }}
 </button>

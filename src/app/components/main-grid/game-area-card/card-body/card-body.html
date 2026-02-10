@@ -1,3 +1,8 @@
 <div class="card-body">
-  <app-game-image></app-game-image>
+  @if (!gameService.isPlaying()) {
+    <app-game-image></app-game-image>
+  } 
+  @else {
+    <app-game-iframe></app-game-iframe>
+  }
 </div>

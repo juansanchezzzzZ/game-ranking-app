@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { GameService } from '../../../../../services/game.service';
 
 @Component({
   selector: 'app-game-image',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './game-image.html',
   styleUrl: './game-image.css'
 })
-export class GameImage {}
+export class GameImage {
+  protected gameService = inject(GameService);
+}
