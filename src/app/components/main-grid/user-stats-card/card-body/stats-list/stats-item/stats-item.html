@@ -1,4 +1,6 @@
 <div class="stats-item-container">
   <span class="stats-label">{{ label }}</span>
-  <span class="stats-value">{{ value }}</span>
+  <span class="stats-value" [class.updating]="label === 'Highest Score'">
+    {{ value ?? '---' }}
+  </span>
 </div>

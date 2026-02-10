@@ -11,8 +11,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* El último item de la lista no necesita borde inferior */
-:host:last-child .stats-item-container {
+:host:last-of-type .stats-item-container {
   border-bottom: none;
 }
 
@@ -27,4 +26,10 @@
   color: #ffffff;
   font-size: 1rem;
   font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.stats-value.updating {
+  color: #3b82f6;
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
 }
