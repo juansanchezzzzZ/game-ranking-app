@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { GameService } from '../../../../../services/game.service';
 
 @Component({
   selector: 'app-start-game-button',
@@ -6,4 +7,14 @@ import { Component } from '@angular/core';
   templateUrl: './start-game-button.html',
   styleUrl: './start-game-button.css'
 })
-export class StartGameButton {}
+export class StartGameButton {
+  protected gameService = inject(GameService);
+
+  handleAction() {
+    if (this.gameService.isPlaying()) {
+      this.gameService.stopGame();
+    } else {
+      this.gameService.startGame();
+    }
+  }
+}
