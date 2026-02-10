@@ -11,6 +11,6 @@
 
   <app-stats-item 
     label="Total Play Time" 
-    [value]="user.totalPlayTimeSec + 's'">
+    [value]="(user.totalPlayTimeSec || 0) + 's'">
   </app-stats-item>
 </div>

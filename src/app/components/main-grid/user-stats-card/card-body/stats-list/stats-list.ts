@@ -12,5 +12,5 @@ import { StatsItem } from './stats-item/stats-item';
 })
 export class StatsList {
   private authService = inject(AuthService);
-  userData$ = this.authService.userProfile$;
+  protected userData$ = this.authService.userProfile$;
 }
