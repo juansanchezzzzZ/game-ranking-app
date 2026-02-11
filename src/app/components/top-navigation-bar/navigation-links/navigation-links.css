@@ -2,13 +2,36 @@
   display: flex;
   gap: 32px;
   font-weight: 500;
+  align-items: center;
 }
 
 .links a {
   cursor: pointer;
-  color: #ccc;
+  color: #6b7280; 
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+  user-select: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  position: relative;
 }
 
 .links a:hover {
-  color: white;
+  color: #9ca3af;
+}
+
+.links a.active {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
 }

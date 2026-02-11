@@ -1,6 +1,12 @@
 .title {
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-family: 'Inter', system-ui, sans-serif;
+  text-shadow: 0 0 10px rgba(0, 180, 255, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }

@@ -1,4 +1,7 @@
-<div class="row-container" [class.is-sticky]="isSticky()">
+<div class="row-container" 
+     [class.is-sticky]="isSticky()" 
+     [class.is-me]="isMe()">
+  
   <app-table-cell align="center" class="col-rank">
     <span class="rank-badge" [class]="'rank-' + rank()">
       {{ rank() }}
@@ -12,4 +15,5 @@
   <app-table-cell align="right" class="col-score">
     <span class="score-value">{{ score() | number }}</span>
   </app-table-cell>
+  
 </div>

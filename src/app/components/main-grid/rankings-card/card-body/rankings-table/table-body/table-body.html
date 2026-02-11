@@ -9,7 +9,7 @@
   <div class="rows-wrapper">
     @for (player of store.players(); track player.uid; let i = $index) {
       <app-table-row
-        [class.highlight-me]="player.uid === store.currentUserUid()"
+        [isMe]="player.uid === store.currentUserUid()"
         [rank]="getRank(i)"
         [name]="player.usernameDisplay"
         [score]="player.highestScore">
@@ -24,7 +24,8 @@
   @if (store.showStickyUser() && store.currentUserData()) {
     <div class="sticky-footer">
       <app-table-row
-        class="sticky-highlight"
+        [isSticky]="true"
+        [isMe]="true"
         [rank]="store.currentUserData().rank || '??'"
         [name]="store.currentUserData().usernameDisplay"
         [score]="store.currentUserData().highestScore">

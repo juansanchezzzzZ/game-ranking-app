@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NavlinksUiService } from '../../../services/navlinks.ui.service';
 
 @Component({
   selector: 'app-navigation-links',
   standalone: true,
-  template: `
-    <div class="links">
-      <a>GAME</a>
-      <a>LEADERBOARD</a>
-      <a>PROFILE</a>
-    </div>
-  `,
+  imports: [CommonModule],
+  templateUrl: './navigation-links.html',
   styleUrl: './navigation-links.css'
 })
-export class NavigationLinks {}
+export class NavigationLinks {
+  private uiService = inject(NavlinksUiService);
+  
+  sections = this.uiService.visibleSections;
+
+  toggle(section: 'game' | 'leaderboard' | 'profile'): void {
+    this.uiService.toggleSection(section);
+  }
+}

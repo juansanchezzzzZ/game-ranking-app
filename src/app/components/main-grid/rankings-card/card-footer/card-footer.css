@@ -4,7 +4,9 @@
 }
 
 .card-footer-container {
-  background-color: #0f0f0f;
-  border-top: 1px solid #222;
+  background: linear-gradient(180deg, rgba(19, 24, 43, 0.8) 0%, rgba(8, 15, 26, 0.95) 100%);
+  border-top: 1px solid rgba(0, 180, 255, 0.2);
   padding: 10px 20px;
+  backdrop-filter: blur(8px);
+  border-radius: 0 0 14px 14px;
 }

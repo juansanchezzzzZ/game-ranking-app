@@ -40,7 +40,7 @@ export class AuthService {
 
   async signUp(email: string, pass: string, username: string) {
     const credential = await createUserWithEmailAndPassword(this.auth, email, pass);
-    const defaultAvatar = `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`;
+    const defaultAvatar = `https://api.dicebear.com/7.x/pixel-art/svg?seed=${username}`;
 
     await updateProfile(credential.user, { 
       displayName: username,

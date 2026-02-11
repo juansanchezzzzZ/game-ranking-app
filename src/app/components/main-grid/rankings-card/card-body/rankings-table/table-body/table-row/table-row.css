@@ -7,44 +7,85 @@
   display: grid;
   grid-template-columns: 80px 1fr 120px;
   align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px solid #1a1a1a;
-  transition: background-color 0.2s ease;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0, 180, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-sizing: border-box;
 }
 
 .row-container:hover {
-  background-color: rgba(255, 255, 255, 0.03);
+  background: linear-gradient(90deg, rgba(0, 180, 255, 0.08) 0%, transparent 100%);
+  border-bottom-color: rgba(0, 180, 255, 0.2);
+}
+
+.row-container.is-me {
+  background: linear-gradient(90deg, rgba(0, 180, 255, 0.15) 0%, rgba(0, 180, 255, 0.03) 100%) !important;
+  border-left: 4px solid #00B4FF;
+  z-index: 1;
+}
+
+.row-container.is-me .player-name {
+  color: #00B4FF;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(0, 180, 255, 0.4);
+}
+
+.row-container.is-me .score-value {
+  text-shadow: 0 0 12px rgba(0, 180, 255, 0.5);
 }
 
 .player-name {
-  color: #fff;
-  font-weight: 500;
-  font-size: 0.95rem;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
 }
 
 .score-value {
-  color: #ffd700;
-  font-weight: 700;
+  color: #00B4FF;
+  font-weight: 800;
   font-family: 'Inter', sans-serif;
+  text-align: right;
+  padding-right: 24px;
 }
 
 .rank-badge {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 800;
-  background: #222;
-  color: #888;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 900;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.rank-1 { background: #ffd700; color: #000; }
-.rank-2 { background: #c0c0c0; color: #000; }
-.rank-3 { background: #cd7f32; color: #000; }
+.rank-1 { 
+  background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%); 
+  color: #000; 
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  border: none;
+}
+
+.rank-2 { 
+  background: linear-gradient(135deg, #E2E8F0 0%, #94A3B8 100%); 
+  color: #000; 
+  box-shadow: 0 0 15px rgba(226, 232, 240, 0.2);
+  border: none;
+}
+
+.rank-3 { 
+  background: linear-gradient(135deg, #CD7F32 0%, #8B4513 100%); 
+  color: #000; 
+  box-shadow: 0 0 15px rgba(205, 127, 50, 0.2);
+  border: none;
+}
 
 .is-sticky {
-  border-bottom: none;
+  border-bottom: none !important;
 }
