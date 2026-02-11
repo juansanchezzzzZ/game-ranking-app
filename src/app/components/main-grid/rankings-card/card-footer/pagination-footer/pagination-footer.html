@@ -1,5 +1,19 @@
-<div class="pagination">
-  <app-previous-button></app-previous-button>
-  <app-status-text></app-status-text>
-  <app-next-button></app-next-button>
+<div class="pagination-container">
+  <button 
+    class="nav-button" 
+    (click)="store.prevPage()" 
+    [disabled]="store.currentPage() <= 1 || store.isLoading()">
+    PREVIOUS
+  </button>
+
+  <div class="status-text">
+    PAGE <span class="current">{{ store.currentPage() }}</span> OF {{ store.totalPages() }}
+  </div>
+
+  <button 
+    class="nav-button" 
+    (click)="store.nextPage()" 
+    [disabled]="store.currentPage() >= store.totalPages() || store.isLoading()">
+    NEXT
+  </button>
 </div>
