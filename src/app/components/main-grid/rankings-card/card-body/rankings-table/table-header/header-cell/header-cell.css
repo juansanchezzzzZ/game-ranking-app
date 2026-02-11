@@ -1,7 +1,21 @@
-.header-cell {
-  font-size: 13px;
-  font-weight: 600;
-  color: #cbd5f5;
+:host {
+  display: block;
+  flex: 1; 
+  padding: 16px;
+}
+
+.header-cell-content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  
+  color: #666;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  font-family: 'Inter', system-ui, sans-serif;
+  
+  white-space: nowrap;
+  user-select: none;
 }

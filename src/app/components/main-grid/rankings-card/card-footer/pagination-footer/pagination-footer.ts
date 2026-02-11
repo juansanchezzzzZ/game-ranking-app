@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
-import { PreviousButton } from './previous-button/previous-button';
-import { NextButton } from './next-button/next-button';
-import { StatusText } from './status-text/status-text';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { LeaderboardStoreService } from '../../../../../services/leaderboard.store.service';
 
 @Component({
   selector: 'app-pagination-footer',
   standalone: true,
-  imports: [PreviousButton, StatusText, NextButton],
+  imports: [CommonModule],
   templateUrl: './pagination-footer.html',
   styleUrl: './pagination-footer.css',
 })
-export class PaginationFooter {}
+export class PaginationFooter {
+  store = inject(LeaderboardStoreService);
+}

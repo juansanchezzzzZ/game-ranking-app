@@ -1,3 +1,4 @@
-<div class="header-cell">
-  {{ text }}
+<div class="header-cell-content" 
+     [style.justify-content]="align === 'center' ? 'center' : align === 'right' ? 'flex-end' : 'flex-start'">
+  <ng-content></ng-content>
 </div>

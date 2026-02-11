@@ -1,5 +1,11 @@
-.card-body {
-  padding: 16px;
+:host {
+  display: block;
   width: 100%;
-  box-sizing: border-box;
+}
+
+.card-body-content {
+  padding: 0; 
+  background-color: #050505;
+  min-height: 400px;
+  position: relative;
 }

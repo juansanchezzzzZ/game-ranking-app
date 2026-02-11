@@ -1,5 +1,15 @@
-<div class="table-row">
-  <app-table-cell>{{ rank }}</app-table-cell>
-  <app-table-cell>{{ name }}</app-table-cell>
-  <app-table-cell class="score">{{ score }}</app-table-cell>
+<div class="row-container" [class.is-sticky]="isSticky()">
+  <app-table-cell align="center" class="col-rank">
+    <span class="rank-badge" [class]="'rank-' + rank()">
+      {{ rank() }}
+    </span>
+  </app-table-cell>
+
+  <app-table-cell align="left" class="col-name">
+    <span class="player-name">{{ name() }}</span>
+  </app-table-cell>
+
+  <app-table-cell align="right" class="col-score">
+    <span class="score-value">{{ score() | number }}</span>
+  </app-table-cell>
 </div>

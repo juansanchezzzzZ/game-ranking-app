@@ -67,9 +67,9 @@ GamingDashboardApp (Root Container)
         │
         └── CardFooter (Component - Reusable)
             └── PaginationFooter (Component - Reusable)
-                ├── PreviousButton (Component - Reusable Button) - "PREVIOUS"
+                ├── PreviousButton (Button) - "PREVIOUS"
                 ├── StatusText (Text) - "Page X of Y"
-                └── NextButton (Component - Reusable Button) - "NEXT"
+                └── NextButton (Button) - "NEXT"
 
 ## Link
 You can view the interactive Component Hierarchy map here:

@@ -1,3 +1,10 @@
-.card-footer {
-  margin-top: 12px;
+:host {
+  display: block;
+  width: 100%;
+}
+
+.card-footer-container {
+  background-color: #0f0f0f;
+  border-top: 1px solid #222;
+  padding: 10px 20px;
 }
