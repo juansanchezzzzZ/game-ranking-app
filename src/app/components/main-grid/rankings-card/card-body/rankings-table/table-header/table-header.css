@@ -1,18 +1,30 @@
 :host {
   display: block;
   width: 100%;
-  background-color: #111;
-  border-bottom: 2px solid #222;
+  background: linear-gradient(180deg, #13182B 0%, #0c1222 100%);
+  border-bottom: 1px solid rgba(0, 180, 255, 0.2);
 }
 
 .header-row-container {
   display: flex;
   align-items: center;
   width: 100%;
+  padding: 14px 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.col-rank, .col-name, .col-score {
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .col-rank {
   flex: 0 0 80px;
+  text-align: center;
 }
 
 .col-name {
@@ -21,4 +33,5 @@
 
 .col-score {
   flex: 0 0 120px;
+  text-align: right;
 }

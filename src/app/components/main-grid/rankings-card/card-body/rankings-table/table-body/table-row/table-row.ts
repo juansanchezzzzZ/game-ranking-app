@@ -14,4 +14,5 @@ export class TableRow {
   name = input<string>('');
   score = input<number>(0);
   isSticky = input<boolean>(false);
+  isMe = input<boolean>(false);
 }

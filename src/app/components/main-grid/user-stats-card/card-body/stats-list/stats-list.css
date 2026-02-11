@@ -6,10 +6,16 @@
 .stats-list-wrapper {
   display: flex;
   flex-direction: column;
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 12px;
-  padding: 4px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(4px);
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(
+    180deg, 
+    rgba(19, 24, 43, 0.8) 0%, 
+    rgba(8, 15, 26, 0.9) 100%
+  );
+  border-radius: 14px;
+  padding: 8px 16px;
+  border: 1px solid rgba(0, 180, 255, 0.15);
+  backdrop-filter: blur(8px);
+  box-shadow: 
+    inset 0 0 15px rgba(0, 0, 0, 0.4),
+    0 4px 15px rgba(0, 0, 0, 0.2);
 }
